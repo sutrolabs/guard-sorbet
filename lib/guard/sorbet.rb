@@ -1,19 +1,28 @@
-# typed: strong
+# typed: strict
 
-require 'guard/plugin'
+require 'guard/compat/plugin'
 require 'sorbet-runtime'
 
 module Guard
   class Sorbet < Plugin
     extend T::Sig
 
+    sig {params(options: T.untyped).void}
+    def initialize(options = nil)
+      super(options)
+
+      @version = T.let('0.0.1', String)
+      @sorbet_version = T.let(Gem.loaded_specs['sorbet'].version.to_s, String)
+    end
+
     sig {void}
     def run_all
-      # TODO logger
-      # TODO run the right srb
-      p "guard-sorbet running!"
+      Compat::UI.info "Guard::Sorbet #{@version} is running, with Sorbet #{@sorbet_version}"
       srb_path = Gem.bin_path 'sorbet', 'srb'
-      `#{srb_path}`  # TODO get output
+      if !system(srb_path)
+        Compat::UI.error "srb failed"
+        throw :task_has_failed
+      end
     end
 
     sig {void}
