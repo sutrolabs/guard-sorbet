@@ -4,9 +4,9 @@ Gem::Specification.new do |spec|
   spec.name = 'guard-sorbet'
   spec.version = '0.0.1'
   spec.authors = ['Bradley Buda']
-  spec.summary = 'Guard plugin for Sorbet'
+  spec.summary = 'Guard plugin for the Sorbet Ruby type checker'
   spec.license = 'MIT'
-  spec.homepage = 'https://getcensus.com'
+  spec.homepage = 'https://github.com/sutrolabs/guard-sorbet'
   spec.files = `git ls-files -z`.split("\x0")
 
   spec.add_runtime_dependency 'guard', '~> 2.0'
