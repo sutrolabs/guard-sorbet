@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = 'guard-sorbet'
-  spec.version = '0.0.1'
+  spec.version = '0.5.0'
   spec.authors = ['Bradley Buda']
   spec.summary = 'Guard plugin for the Sorbet Ruby type checker'
   spec.license = 'MIT'
